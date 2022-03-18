@@ -182,6 +182,7 @@ def build_on_docker(
                 package=container_package_dir,
             )
             docker.call(["sh", "-c", before_build_prepared], env=env)
+            docker.copy_out(Path("/project"), Path("~/build"))
 
         log.step("Building wheel...")
 
